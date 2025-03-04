@@ -1,9 +1,3 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# In[5]:
-
-
 #
 # Copyright (C) 2018 Pico Technology Ltd. See LICENSE file for terms.
 #Copyright © 2019 Pico Technology Ltd.
