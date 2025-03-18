@@ -3,7 +3,7 @@
 Theropod STORI analysis tools
 
 ### Data acquisition with external digital oscilloscope
-Either the pico-repeat-block-triggeron3V-queuing.py or pico-repeat-block-triggeron3V-queuing.ipynb can be used to collect transients. Updates to the storage folder name is required and must be unique.
+Either the pico-repeat-block-triggeron3V-queuing.py or pico-repeat-block-triggeron3V-queuing.ipynb can be used to collect transients. Updates to the storage folder name is required and must be unique. To use the scripts, the PicoSDK must be installed.
 
 ### Transient processing
 Two versions of the the transient processor are available for single file processing (e.g., for job array on clusters) or a multiprocessor version that will process all *.ftr files in a directory.
