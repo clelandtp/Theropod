@@ -19,7 +19,10 @@ $ python theropod_slope_multi_file.py
 ```
 
 ### Theropod Calibration factor calculation
-For calibration a myoglobin file labeled with "myo" and carbonic anhydrase 2 labeled with "cah2" are required in a single folder.
+Use the theropod_slope_calib_filter.py script to generate calibration files: one myoglobin file labeled with "myo" and one carbonic anhydrase 2 labeled with "cah2" are required in a single folder.
+```sh
+$ python theropod_slope_calib_filter.py <FILENAME>
+```
 In RStudio, theropod_calibration.R can be directly run after setting the working directory containing the myo and cah2 files. A KDE plot with the conversion factor will be output.
 
 ### Theropod SlopeComb Processing
