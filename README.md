@@ -28,6 +28,8 @@ In RStudio, theropod_calibration.R can be directly run after setting the working
 ### Theropod SlopeComb Processing
 To filter and perform charge assignment for the pkl files theropod_v1_0_0.py is used. Prior to full processing the calibration factor must be updated (Line 156). Settings for td (line 68), r-squared (line 69), charge shift (line 161) can be modified. Default settings for tod is 300 ms and r-squared is 0.99. Charge shift should be adjusted depending on expected multi-ion events and protein size. Tables containing the filtered data and final mass calculation will be exported. Additional plots of SlopeComb vs m/z; SlopeComb vs Mass; Slope Choice; m/z vs Final Charge; Final Charge Histogram; a representative m/z mass spectrum from 600-1200 m/z. Additionally an interactive neutral mass spectrum is output in html format. The neutral mass spectrum and a M+H spectrum are exported as csv and mzML files.
 
+The location of mzR installed through RStudio must be updated for the version of R used (line 4 of theropod_mzML.R) 
+
 ```sh
 $ python theropod_v1_0_0.py <FILENAME>
 ```
