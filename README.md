@@ -27,6 +27,7 @@ In RStudio, theropod_calibration.R can be directly run after setting the working
 
 ### Theropod SlopeComb Processing
 To filter and perform charge assignment for the pkl files theropod.py is used. Command line parameters can be set as follows:
+  
   --charge CHARGE       Set the number of charges to evaluate; Default = 60
   
   --neighbor NEIGHBOR   Set the number of either charge or isotope neighbors; Default = 10
