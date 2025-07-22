@@ -26,7 +26,7 @@ $ python theropod_slope_calib_filter.py <FILENAME>
 In RStudio, theropod_calibration.R can be directly run after setting the working directory containing the myo and cah2 files. A KDE plot with the conversion factor will be output.
 
 ### Theropod SlopeComb Processing
-To filter and perform charge assignment for the pkl files theropod.py is used. Command line parameters can be set as follows:
+To filter and perform charge assignment for the pkl files theropod.py is used. Command-line parameters can be set as follows:
   
   --charge CHARGE       Set the number of charges to evaluate; Default = 60
   
@@ -53,7 +53,7 @@ The location of mzR installed through RStudio must be updated for the version of
 ```sh
 $ python theropod.py <FILENAME> --charge CHARGE --neighbor NEIGHBOR --tod TOD --rsquare RSQUARE --slopecal SLOPECAL --minmass MINMASS --maxmass MAXMASS --chargecorrecttype CHARGECORRECTTYPE --spectrumtype SPECTRUMTYPE
 ```
-Minimum commandline
+Minimum command-line
 ```sh
 $ python theropod.py <FILENAME>
 ```
