@@ -302,7 +302,7 @@ elif args.spectrumtype == 2:
         return q
     q = create_q()
     x = df['Massmzclust2'].to_numpy()
-    mcz_range = np.arange(5000, 40000,0.05)
+    mcz_range = np.arange(args.minmass, args.maxmass,0.05)
     histo = np.histogram(x, mcz_range, weights = df['ioncount'])
     histo2 = histo[0]
     mcz_range2 = histo[1]
@@ -348,4 +348,4 @@ elif args.spectrumtype == 2:
 script_path = os.path.join(os.path.dirname(__file__), "theropod_mzML.R")
 
 
-subprocess.run(["/PROGRA~1/R/R-4.3.1/bin/x64/Rscript.exe", script_path])
+subprocess.run([r"C:/PROGRA~1/R/R-4.3.1/bin/x64/Rscript.exe", script_path])
