@@ -51,7 +51,7 @@ Tables containing the filtered data and final mass calculation will be exported.
 The location of mzR installed through RStudio must be updated for the version of R used (line 4 of theropod_mzML.R) 
 
 ```sh
-$ python theropod.py <FILENAME> --charge CHARGE --neighbor NEIGHBOR --tod TOD --rsquare RSQUARE --slopecal SLOPECAL --minmass MINMASS --maxmass MAXMASS --chargecorrecttype CHARGECORRECTTYPE --spectrumtype SPECTRUMTYPE
+$ python theropod.py <FILENAME> --charge CHARGE --neighbor NEIGHBOR --survival SURVIVAL --rsquare RSQUARE --slopecal SLOPECAL --minmass MINMASS --maxmass MAXMASS --chargecorrecttype CHARGECORRECTTYPE --spectrumtype SPECTRUMTYPE
 ```
 Minimum command-line
 ```sh
