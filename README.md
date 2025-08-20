@@ -32,7 +32,7 @@ To filter and perform charge assignment for the pkl files theropod.py is used. C
   
   --neighbor NEIGHBOR   Set the number of either charge or isotope neighbors; Default = 10
   
-  --tod TOD             Set the minimum ion life time; Default = 300
+  --survival SURVIVAL   Set the minimum ion life time; Default = 300
   
   --rsquare RSQUARE     Set the r-squared value; Default = 0.99
   
