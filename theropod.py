@@ -45,7 +45,7 @@ parser = argparse.ArgumentParser()
 parser.add_argument("filename", type=str, help="Add a filename")
 parser.add_argument("--charge", type=int, default = 60, help="Set the number of charges to evaluate; Default = 60")
 parser.add_argument("--neighbor", type=int, default = 10, help="Set the number of either charge or isotope neighbors; Default = 10")
-parser.add_argument("--tod", type=int, default = 300, help="Set the minimum ion life time; Default = 300")
+parser.add_argument("--survival", type=int, default = 300, help="Set the minimum ion life time; Default = 300")
 parser.add_argument("--rsquare", type=int, default = 0.99, help="Set the r-squared value; Default = 0.99")
 parser.add_argument("--slopecal", type=int, default = 2.292161, help="Set the KDE slope calibration value; Default = 2.292161")
 parser.add_argument("--minmass", type=int, default = 5000, help="Set the minimum mass for the final neutral mass spectrum; Default = 5000")
@@ -70,7 +70,7 @@ slopes = []
 
 for f in stori_files:
     df = pd.read_pickle(f, compression = 'xz')
-    td = args.tod
+    td = args.survival
     rv = args.rsquare
 
     df['SlopeComb2']=np.where((df['P Death1']-0>= td) & (df['SciLin R-squared1']>= rv), df['SciLin Slope1'], 
@@ -85,8 +85,25 @@ for f in stori_files:
                                          np.where((df['P Death3']-df['P Death2']>= td) & (df['SciLin R-squared3']>= rv), "Slope3",
                                                   np.where((df['P Death4']-df['P Death3']>= td) & (df['SciLin R-squared4']>= rv), "Slope4",
                                                            np.where((df['P Death5']-df['P Death4']>= td) & (df['SciLin R-squared5']>= rv), "Slope5",0)))))
+    df['SlopeVal']=np.where((df['P Death1']-0>= td) & (df['SciLin R-squared1']>= rv), 1, 
+                            np.where((df['P Death2']-df['P Death1']>= td) & (df['SciLin R-squared2']>= rv), 2,
+                                     np.where((df['P Death3']-df['P Death2']>= td) & (df['SciLin R-squared3']>= rv), 3,
+                                              np.where((df['P Death4']-df['P Death3']>= td) & (df['SciLin R-squared4']>= rv), 4,
+                                                       np.where((df['P Death5']-df['P Death4']>= td) & (df['SciLin R-squared5']>= rv), 5,0)))))
+    
+    df['SurvivalTime']=np.where((df['SlopeVal']==1), df['P Death1'], 
+                            np.where((df['SlopeVal']==2), df['P Death2']-df['P Death1'],
+                                     np.where((df['SlopeVal']==3), df['P Death3']-df['P Death2'],
+                                              np.where((df['SlopeVal']==4), df['P Death4']-df['P Death3'],
+                                                       np.where((df['SlopeVal']==5), df['P Death5']-df['P Death4'],0)))))
+                                                       
+    df['SlopeRsq']=np.where((df['SlopeVal']==1), df['SciLin R-squared1'], 
+                            np.where((df['SlopeVal']==2), df['SciLin R-squared2'],
+                                     np.where((df['SlopeVal']==3), df['SciLin R-squared3'],
+                                              np.where((df['SlopeVal']==4), df['SciLin R-squared4'],
+                                                       np.where((df['SlopeVal']==5), df['SciLin R-squared5'],0)))))
     #print(df)
-    df2 = df[['Frequency','m/z', 'Intensity', 'Scan', 'Ions', 'SlopeComb2', 'SlopeChoice']].copy()
+    df2 = df[['Frequency','m/z', 'Intensity', 'Scan', 'Ions', 'SlopeRsq', 'SurvivalTime', 'SlopeComb2', 'SlopeChoice']].copy()
 
     slopes.append(df2)
 #print(slopes)
